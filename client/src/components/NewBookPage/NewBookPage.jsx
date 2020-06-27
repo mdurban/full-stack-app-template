@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { newBook } from '../../requests/books';
+import { newBook } from '../../requests/books'
 
 const NewBookPage = ({ goToBooksListPage }) => {
   const [bookTitle, setBookTitle] = useState('')
@@ -12,10 +12,10 @@ const NewBookPage = ({ goToBooksListPage }) => {
       <input onChange={e => setAuthorFirstName(e.target.value)} type='text' name='Author First Name' placeholder='title' />
       <input onChange={e => setAuthorLastName(e.target.value)} type='text' name='Author Last Name' placeholder='title' />
 
-      <button onClick={() => {
+      <button className='add-book-button' onClick={() => {
         newBook(bookTitle, authorFirstName, authorLastName)
         goToBooksListPage()
-      }}>Add book</button>
+      }}>Add Book</button>
     </div>
   )
 }

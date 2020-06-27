@@ -16,7 +16,7 @@ const BooksListPage = ({ goToAddBookPage }) => {
           <div key={index} className="book-info">"{book.title}" written by {book.author_first_name} {book.author_last_name}</div>
         ))
       }
-      <button onClick={goToAddBookPage}>Add a new book</button>
+      <button className='go-to-add-book' onClick={goToAddBookPage}>Add a new book</button>
     </div>
   )
 }

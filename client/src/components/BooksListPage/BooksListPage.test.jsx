@@ -20,7 +20,7 @@ describe('BooksListPage', () => {
   })
 
   test('makes call to fetch all books on render', async () => {
-    const booksList = mount(<BooksListPage sampleActionHandler={jest.fn()} />)
+    const booksList = mount(<BooksListPage />)
 
     await act(async () => booksList);
     booksList.update();
@@ -30,12 +30,21 @@ describe('BooksListPage', () => {
   })
 
   test('displays info for each book returned from api request', async () => {
-    const booksList = mount(<BooksListPage sampleActionHandler={jest.fn()} />)
+    const booksList = mount(<BooksListPage />)
 
     await act(async () => booksList);
     booksList.update();
 
     expect(booksList.find('.book-info').first().text()).toEqual('"Harry Potter" written by J.K. Rowling')
     expect(booksList.find('.book-info').at(1).text()).toEqual('"The Lord of the Rings" written by J.R.R. Tolkien')
+  })
+
+  test('calls handler to render Add Book Page on button click', () => {
+    const mockGoToAddBookPageHandler = jest.fn()
+    const newBookPage = shallow(<BooksListPage goToAddBookPage={mockGoToAddBookPageHandler} />)
+
+    newBookPage.find('.go-to-add-book').simulate('click')
+
+    expect(mockGoToAddBookPageHandler).toHaveBeenCalled()
   })
 })
