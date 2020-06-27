@@ -6,18 +6,11 @@ const bookRoutes = require('./routes/bookRoutes')
 
 const app = express()
 
-database.connect()
-
 const port = process.env.PORT || 5000
-
-
-app.use(cors())
 app.listen(port, () => console.log(`Listening on port ${port}`))
 
-// createBook()
-// getBooks()
-// deleteAllBooks()
-// getBooks()
+database.connect()
 
-// app.use('/express_backend', bookRoutes)
+app.use(cors())
+
 app.use('/books', bookRoutes)

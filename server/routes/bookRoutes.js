@@ -11,7 +11,4 @@ router.get('/', async (req, res) => {
   res.send(books)
 })
 
-router.get
-
-
-module.exports = router;
+module.exports = router
