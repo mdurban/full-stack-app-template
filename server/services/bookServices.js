@@ -1,4 +1,4 @@
-const { getBooks } = require('../repository/books')
+const { getBooks, addBook } = require('../repository/books')
 
 const getAllBooks = async () => {
   const books = await getBooks()
@@ -7,4 +7,10 @@ const getAllBooks = async () => {
   return booksSortedByTitle
 }
 
-module.exports = { getAllBooks }
+const createNewBook = async ({ title, firstName, lastName }) => {
+  await addBook(title, firstName, lastName)
+
+  return { title }
+}
+
+module.exports = { getAllBooks, createNewBook }

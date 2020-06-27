@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import ChildComponentConnector from '../ChildComponent'
+import { getBooks, newBook } from '../../requests/books';
 
 const ParentComponent = ({ sampleActionHandler }) => {
   const [dataFromServer, setDataFromServer] = useState([]);
+  const [bookTitle, setBookTitle] = useState('')
+  const [authorFirstName, setAuthorFirstName] = useState('')
+  const [authorLastName, setAuthorLastName] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:5000/books')
-      .then(response => response.json())
-      .then(data => setDataFromServer(data))
+    getBooks().then(data => setDataFromServer(data))
   }, []);
 
   return (
     <div>
-      <button onClick={sampleActionHandler}>Dispatch action</button>
+      <div>Books:</div>
       {
-        dataFromServer && dataFromServer.map((book, index) => <div key={index}>{book.title}</div>)
+        dataFromServer.map((book, index) => (
+          <div key={index} className="book-info">"{book.title}" written by {book.author_first_name} {book.author_last_name}</div>
+        ))
       }
-      <ChildComponentConnector />
+      <input onChange={e => setBookTitle(e.target.value)} type='text' name='Book Title' placeholder='title' />
+      <input onChange={e => setAuthorFirstName(e.target.value)} type='text' name='Author First Name' placeholder='title' />
+      <input onChange={e => setAuthorLastName(e.target.value)} type='text' name='Author Last Name' placeholder='title' />
+
+      <button onClick={() => newBook(bookTitle, authorFirstName, authorLastName)}>Add book</button>
     </div>
   )
 }
