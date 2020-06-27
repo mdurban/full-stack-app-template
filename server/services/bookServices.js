@@ -9,8 +9,6 @@ const getAllBooks = async () => {
 
 const createNewBook = async ({ title, firstName, lastName }) => {
   await addBook(title, firstName, lastName)
-
-  return { title }
 }
 
 module.exports = { getAllBooks, createNewBook }

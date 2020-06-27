@@ -8,9 +8,9 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const newBook = await createNewBook(req.body)
+  await createNewBook(req.body)
 
-  res.send(newBook)
+  res.sendStatus(200);
 })
 
 module.exports = router
