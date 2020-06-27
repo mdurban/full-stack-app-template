@@ -1,14 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const { createBook, getBooks, deleteAllBooks } = require('../repository/books')
+const { getAllBooks } = require('../services/bookServices')
+const express = require('express')
+
+const router = express.Router()
 
 router.get('/', async (req, res) => {
-  deleteAllBooks()
-  createBook()
-
-  const books = await getBooks()
-
-  res.send(books)
+  res.send(await getAllBooks())
 })
 
 module.exports = router

@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const { database } = require('./database/db')
-const { createBook, getBooks, deleteAllBooks } = require('./repository/books')
 const bookRoutes = require('./routes/bookRoutes')
 
 const app = express()
