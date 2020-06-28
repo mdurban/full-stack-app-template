@@ -1,10 +1,7 @@
-1.) Clone project.
+Sample full-stack web application.
 
-2.) `npm install` to install dependencies (for both `client/` and `server/`)
-
-2.) `npm start` to run application (for both `client/` and `server/`)
-
-3.) `npm test` to run tests (for both `client/` and `server/`)
+Tech Stack:
+React, Redux, Node.js, Express, Postgres
 
 ## Client
 `npm install` to install dependencies
