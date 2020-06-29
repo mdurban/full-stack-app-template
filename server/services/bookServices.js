@@ -1,4 +1,4 @@
-const { getBooks, addBook } = require('../repository/books')
+const { getBooks, addBook, deleteBookWithTitle } = require('../repository/books')
 
 const getAllBooks = async () => {
   const books = await getBooks()
@@ -11,4 +11,9 @@ const createNewBook = async ({ title, firstName, lastName }) => {
   await addBook(title, firstName, lastName)
 }
 
-module.exports = { getAllBooks, createNewBook }
+const removeBook = async (title) => {
+  console.log('in service layer with: ', title)
+  await deleteBookWithTitle(title)
+}
+
+module.exports = { getAllBooks, createNewBook, removeBook }
